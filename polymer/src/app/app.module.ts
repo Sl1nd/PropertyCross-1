@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 import { SearchpageComponent } from './searchpage/searchpage.component'
 import { ResultspageComponent } from './resultspage/resultspage.component'
+import { FavspageComponent } from './favspage/favspage.component'
+import { ListingpageComponent } from './listingpage/listingpage.component'
 
 import { AppComponent } from './app.component';
 
@@ -19,7 +21,9 @@ import { AppComponent } from './app.component';
     HttpModule,
     RouterModule.forRoot([
      { path: '', component: SearchpageComponent },
-     { path: 'searchResults', component: ResultspageComponent }
+     { path: 'searchresults', component: ResultspageComponent },
+     { path: 'favourites', component: FavspageComponent }
+     
           ])
   ],
   providers: [],
