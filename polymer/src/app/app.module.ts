@@ -22,8 +22,8 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot([
      { path: '', component: SearchpageComponent },
      { path: 'searchresults', component: ResultspageComponent },
+     { path: 'searchresults/:id', component: ListingpageComponent },
      { path: 'favourites', component: FavspageComponent }
-     
           ])
   ],
   providers: [],
