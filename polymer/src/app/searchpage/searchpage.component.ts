@@ -16,6 +16,8 @@ export class SearchpageComponent implements OnInit {
   }
 
   searchForProperties(){
-  	this.propertyService.getProperties('Scottland');
-  }
-}
+  	this.propertyService.getProperties('Scottland').subscribe(
+ data => { console.log(data) },
+        err => console.error(err),
+        () => console.log('done'));}
+  }	
