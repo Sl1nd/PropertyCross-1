@@ -1,15 +1,15 @@
 webpackJsonp([1,2],{
 
-/***/ 419:
+/***/ 420:
 /***/ function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(685);
+var content = __webpack_require__(689);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(723)(content, {});
+var update = __webpack_require__(733)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -27,22 +27,22 @@ if(false) {
 
 /***/ },
 
-/***/ 685:
+/***/ 689:
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(686)();
+exports = module.exports = __webpack_require__(690)();
 // imports
 
 
 // module
-exports.push([module.i, "/**\n * 11-08-2016\n * @author Sl1nd\n */\n  body {\n    margin: 0;\n    font-family: 'Roboto', Helvetica, sans-serif;\n  }\n  \n  app-toolbar {\n    background-image: url(" + __webpack_require__(724) + ");\n    color: white;\n    --app-toolbar-font-size: 24px;\n  }\n\n  app-toolbar a {\n  \ttext-decoration: none;\n  \tcolor: white;\n  }\n\n  ", ""]);
+exports.push([module.i, "/**\n * 11-08-2016\n * @author Sl1nd\n */\n\nbody {\n    margin: 0;\n    font-family: 'Roboto', Helvetica, sans-serif;\n}\n\napp-toolbar {\n    background-image: url(" + __webpack_require__(734) + ");\n    color: white;\n    --app-toolbar-font-size: 24px;\n}\n\napp-toolbar a {\n    text-decoration: none;\n    color: white;\n}\n", ""]);
 
 // exports
 
 
 /***/ },
 
-/***/ 686:
+/***/ 690:
 /***/ function(module, exports) {
 
 /*
@@ -99,7 +99,7 @@ module.exports = function() {
 
 /***/ },
 
-/***/ 723:
+/***/ 733:
 /***/ function(module, exports) {
 
 /*
@@ -352,20 +352,20 @@ function updateLink(linkElement, obj) {
 
 /***/ },
 
-/***/ 724:
+/***/ 734:
 /***/ function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAIAAABvrngfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG4nAABzrwAA/rYAAH8WAABMGwAA+NoAADCGAAAW92cclNkAAAA7SURBVHjaXMyxDQAwCANBSCZghV+B/VfxCrSU6VASl2fpPTMl2bXd3UBVDS0zkwQ89Omac9Qj4m4DZwBBnxLz6AYkKQAAAABJRU5ErkJggg=="
 
 /***/ },
 
-/***/ 728:
+/***/ 738:
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(419);
+module.exports = __webpack_require__(420);
 
 
 /***/ }
 
-},[728]);
+},[738]);
 //# sourceMappingURL=styles.map

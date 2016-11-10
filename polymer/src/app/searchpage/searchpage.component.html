@@ -3,14 +3,14 @@
         <iron-icon src="./assets/images/icon-base.png">
         </iron-icon>
         <div main-title> PropertyCross</div>
-        <a routerLink="/favourites" routerLinkActive="active"
->Favourites</a>
+        <a routerLink="/favourites" routerLinkActive="active">Favourites</a>
     </app-toolbar>
 </app-header>
 <section class="search-component__content">
     <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My Location', to search in your current location.</p>
     <paper-input type="search" label="search" class="search-component--fullwith">
     </paper-input>
-    <paper-button class="search-component--fullwith" raised>Go</paper-button>
+    <paper-button class="search-component--fullwith" (click)="searchForProperties
+()" raised>Go</paper-button>
     <paper-button class="search-component--fullwith" raised>My Location</paper-button>
 </section>
