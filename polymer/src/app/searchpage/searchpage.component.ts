@@ -4,20 +4,17 @@ import { PropertyService } from '../shared/property.service'
 @Component({
   selector: 'app-searchpage',
   templateUrl: './searchpage.component.html',
-  styleUrls: ['./searchpage.component.css'],
-  providers: [PropertyService]
+  styleUrls: ['./searchpage.component.css']
 })
 export class SearchpageComponent implements OnInit {
 
-  constructor(private propertyService: PropertyService) { }
-
+  constructor(private propertyService: PropertyService) { 
+  }
+  
   ngOnInit() {
-  	
   }
 
   searchForProperties(){
-  	this.propertyService.getProperties('Scottland').subscribe(
- data => { console.log(data) },
-        err => console.error(err),
-        () => console.log('done'));}
-  }	
+  	this.propertyService.getProperties('Scottland');
+  }
+ } 	

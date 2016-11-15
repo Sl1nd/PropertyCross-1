@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PropertyService } from '../shared/property.service'
 
 @Component({
   selector: 'app-resultspage',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultspageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private propertyService:PropertyService) {
+  		propertyService.propertyList$.subscribe(x => console.log(x));
+    }
 
   ngOnInit() {
   }

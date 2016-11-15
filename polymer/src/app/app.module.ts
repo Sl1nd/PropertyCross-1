@@ -9,6 +9,8 @@ import { ResultspageComponent } from './resultspage/resultspage.component'
 import { FavspageComponent } from './favspage/favspage.component'
 import { ListingpageComponent } from './listingpage/listingpage.component'
 
+import { PropertyService } from './shared/property.service'
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -27,7 +29,7 @@ import { AppComponent } from './app.component';
      { path: 'favourites', component: FavspageComponent }
           ])
   ],
-  providers: [],
+  providers: [PropertyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
