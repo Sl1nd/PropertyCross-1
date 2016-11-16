@@ -24,6 +24,6 @@ export class PropertyService {
 	  params.set('place_name', 'scottland');
     
   	this.jsonp
-  		.get(this.propertiesUrl, {search: params}).subscribe(res => this.propertyListSource.next(res.json().response.listings));
+  		.get(this.propertiesUrl, {search: params}).subscribe(res => this.propertyListSource.next(res.json().response));
   }
 }
