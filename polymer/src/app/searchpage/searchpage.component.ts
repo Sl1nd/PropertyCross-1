@@ -14,7 +14,7 @@ export class SearchpageComponent implements OnInit {
   ngOnInit() {
   }
 
-  searchForProperties(){
-  	this.propertyService.getProperties('Scottland');
+  searchForProperties(searchText: string){
+    this.propertyService.getProperties(searchText);
   }
  } 	
