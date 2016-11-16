@@ -8,8 +8,9 @@ import { PropertyService } from '../shared/property.service'
 })
 export class ResultspageComponent implements OnInit {
 
+  private propertyList: Array<any>;
   constructor(private propertyService:PropertyService) {
-  		propertyService.propertyList$.subscribe(x => console.log(x));
+  		propertyService.propertyList$.subscribe(list => this.propertyList = list);
     }
 
   ngOnInit() {

@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map'; // add map function to observable
 @Injectable()
 export class PropertyService {
   private propertiesUrl = 'http://api.nestoria.co.uk/api';  // URL to web API
-  private propertyListSource = new Subject<string>();
+  private propertyListSource = new Subject<any>();
 
   propertyList$ = this.propertyListSource.asObservable(); 
 
