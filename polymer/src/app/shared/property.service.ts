@@ -7,9 +7,6 @@ import 'rxjs/add/operator/map'; // add map function to observable
 @Injectable()
 export class PropertyService {
   private propertiesUrl = 'http://api.nestoria.co.uk/api';  // URL to web API
-  private propertyListSource = new Subject<any>();
-
-  propertyList$ = this.propertyListSource.asObservable(); 
 
   constructor(private jsonp: Jsonp) {}
 
@@ -21,9 +18,8 @@ export class PropertyService {
 	  params.set('action','search_listings');
 	  params.set('encoding','json');
 	  params.set('listing_type','buy');
-	  params.set('place_name', 'scottland');
+	  params.set('place_name', searchText);
     
-  	this.jsonp
-  		.get(this.propertiesUrl, {search: params}).subscribe(res => this.propertyListSource.next(res.json().response));
+    return this.jsonp.get(this.propertiesUrl, {search: params})
   }
 }

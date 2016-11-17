@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PropertyService } from '../shared/property.service'
 
 @Component({
@@ -8,13 +9,13 @@ import { PropertyService } from '../shared/property.service'
 })
 export class SearchpageComponent implements OnInit {
 
-  constructor(private propertyService: PropertyService) { 
+  constructor(private propertyService: PropertyService, private router: Router) { 
   }
   
   ngOnInit() {
   }
 
   searchForProperties(searchText: string){
-    this.propertyService.getProperties(searchText);
+    this.router.navigate(['/searchresults']); 
   }
  } 	
