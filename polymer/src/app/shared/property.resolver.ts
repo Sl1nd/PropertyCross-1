@@ -10,6 +10,6 @@ export class PropertyResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) {
-    return 	this.propertyService.getProperties('Scottland');	
+    return 	this.propertyService.getProperties(route.params['searchText']);	
   }
 }
