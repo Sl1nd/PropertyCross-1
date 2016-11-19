@@ -1,4 +1,4 @@
-import {PropertyService} from './property.service';
+import {PropertyService} from '../services/property.service';
 import { Injectable} from '@angular/core';
 import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import { Observable } from 'rxjs/Observable';

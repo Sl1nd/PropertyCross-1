@@ -9,8 +9,8 @@ import { ResultspageComponent } from './resultspage/resultspage.component'
 import { FavspageComponent } from './favspage/favspage.component'
 import { ListingpageComponent } from './listingpage/listingpage.component'
 
-import { PropertyService } from './shared/property.service'
-import { PropertyResolver } from './shared/property.resolver'
+import { PropertyService } from './shared/services/property.service'
+import { PropertyResolver } from './shared/resolver/property.resolver'
 
 import { AppComponent } from './app.component';
 
@@ -27,7 +27,7 @@ import { AppComponent } from './app.component';
      { path: '', component: SearchpageComponent },
      { path: 'searchresults', component: ResultspageComponent,
       resolve: {properties: PropertyResolver} },
-     { path: 'searchresults/:id', component: ListingpageComponent },
+     { path: 'searchresults/detail', component: ListingpageComponent },
      { path: 'favourites', component: FavspageComponent }
           ])
   ],

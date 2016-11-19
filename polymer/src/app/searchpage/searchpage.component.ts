@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PropertyService } from '../shared/property.service'
+import { PropertyService } from '../shared/services/property.service'
 
 @Component({
   selector: 'app-searchpage',
