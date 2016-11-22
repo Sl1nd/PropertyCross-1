@@ -23,7 +23,7 @@ export class ResultspageComponent implements OnInit {
   }
 
   private selectProperty (property) {
-    //this.router.navigate(['/searchresults/detail', {'poperty': property}]); 
+   this.router.navigate(['/searchresults/detail', {'id': property.thumb_url}]); 
   }
 
 }
