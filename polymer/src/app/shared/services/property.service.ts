@@ -1,13 +1,15 @@
 import { Injectable  } from '@angular/core';
 import { Jsonp, URLSearchParams, Response	 } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Subject }    from 'rxjs/Subject';
+import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map'; // add map function to observable
 
 @Injectable()
 export class PropertyService {
   private propertiesUrl = 'http://api.nestoria.co.uk/api';  // URL to web API
-  public propertyList = [];
+  public properties: Observable<any>;
+  public propertyList: Array<any>;
+
   constructor(private jsonp: Jsonp) {}
 
   getProperties(searchText: string) {
@@ -19,8 +21,7 @@ export class PropertyService {
 	  params.set('encoding','json');
 	  params.set('listing_type','buy');
 	  params.set('place_name', searchText);
-    this.jsonp.get(this.propertiesUrl, {search: params}).subscribe((resp: any) => this.propertyList = resp._body.response.listings );
-    return this.jsonp.get(this.propertiesUrl, {search: params});
+    this.properties =  this.jsonp.get(this.propertiesUrl, {search: params});
   }
 
   getProperty(id: string) {

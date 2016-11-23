@@ -9,7 +9,7 @@ export class PropertyResolver implements Resolve<any> {
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ) {
-    return 	this.propertyService.getProperties(route.params['searchText']);	
+  ): Observable<any> {
+    return 	this.propertyService.properties;	
   }
 }

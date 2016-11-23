@@ -16,10 +16,13 @@ export class ResultspageComponent implements OnInit {
   }
 
   ngOnInit() {
-      let resp = this.route.snapshot.data['properties']._body.response;
-       this.propertyList = resp.listings;
-       this.totalResults = resp.total_results;
-       this.numberOfResults = this.propertyList.length;
+        this.route.data.subscribe((obj: any) => {
+          let resp = obj.properties._body.response
+          this.propertyList = resp.listings;
+          this.propertyService.propertyList = this.propertyList;
+          this.totalResults = resp.total_results;
+          this.numberOfResults = this.propertyList.length;
+      });
   }
 
   private selectProperty (property) {

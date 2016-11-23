@@ -10,6 +10,6 @@
     <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My Location', to search in your current location.</p>
     <paper-input type="search" label="search" class="search-component--fullwith" #propertyInput>
     </paper-input>
-    <paper-button class="search-component--fullwith" (click)="searchForProperties(propertyInput.value)" raised>Go</paper-button>
+    <paper-button routerLink="/searchresults" class="search-component--fullwith" (click)="searchForProperties(propertyInput.value)" raised>Go</paper-button>
     <paper-button class="search-component--fullwith" raised>My Location</paper-button>
 </section>

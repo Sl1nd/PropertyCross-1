@@ -16,6 +16,6 @@ export class SearchpageComponent implements OnInit {
   }
 
   searchForProperties(searchText: string){
-    this.router.navigate(['/searchresults', {'searchText': searchText}]); 
+    this.propertyService.getProperties(searchText);//, {'searchText': searchText}]); 
   }
  } 	
