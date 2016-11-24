@@ -18,4 +18,8 @@ export class SearchpageComponent implements OnInit {
   searchForProperties(searchText: string){
     this.propertyService.getProperties(searchText);//, {'searchText': searchText}]); 
   }
+
+  toggleLoadingSpinner(el){
+    el.active = true;
+  }
  } 	
