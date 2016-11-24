@@ -2,7 +2,7 @@ import { Injectable  } from '@angular/core';
 import { Jsonp, URLSearchParams, Response	 } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/map'; // add map function to observable
+import 'rxjs/add/operator/publishReplay'; // add publishReplay function to observable
 
 @Injectable()
 export class PropertyService {
@@ -21,7 +21,8 @@ export class PropertyService {
 	  params.set('encoding','json');
 	  params.set('listing_type','buy');
 	  params.set('place_name', searchText);
-    this.properties =  this.jsonp.get(this.propertiesUrl, {search: params});
+
+    this.properties = this.jsonp.get(this.propertiesUrl, {search: params}).publishReplay(1).refCount();;
   }
 
   getProperty(id: string) {
