@@ -1,5 +1,6 @@
-.search-component--fullwith {
-    width: 100%;
+.search-component--spinner {
+    float: right;
+    padding: 8px;
 }
 
 paper-button {

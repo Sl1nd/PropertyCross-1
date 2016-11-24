@@ -3,16 +3,16 @@
         <iron-icon src="./assets/images/icon-base.png">
         </iron-icon>
         <div main-title> PropertyCross</div>
-        <paper-spinner #loadingSpinner active="true"></paper-spinner>
         <a routerLink="/favourites" routerLinkActive="active">Favourites</a>
     </app-toolbar>
 </app-header>
 <section class="search-component__content">
     <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My Location', to search in your current location.</p>
-    <paper-input type="search" label="search" class="search-component--fullwith" #propertyInput>
+    <paper-input type="search" label="search" class="search-component--button" #propertyInput>
     </paper-input>
-    <paper-button routerLink="/searchresults" class="search-component--fullwith" (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(propertyInput.value)" raised>Go</paper-button>
-    <paper-button class="search-component--fullwith" raised>My Location</paper-button>
+    <paper-button routerLink="/searchresults" (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(propertyInput.value)" raised>Go</paper-button>
+    <paper-button raised>My Location</paper-button>
+    <paper-spinner active class="search-component--spinner" #loadingSpinner></paper-spinner>
     <div>
     </div>
     <div *ngIf="showRecentSearch">
