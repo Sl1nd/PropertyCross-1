@@ -47,7 +47,18 @@ export class PropertyService {
   }
 
   addSearchResult(searchResult: any){
-    this.searchResultList.push(searchResult);
+    !this.existingSearchResult(searchResult) ? this.searchResultList.push(searchResult): null;
+
     this._searchResults.next(this.searchResultList);
+  }
+
+  existingSearchResult(newSearch){
+    let isPartOfArray = false;
+    this.searchResultList.forEach(formerSearch => {
+        if(formerSearch.location === newSearch.location) {
+           isPartOfArray = true; 
+        }
+    });
+    return isPartOfArray; 
   }
 }
