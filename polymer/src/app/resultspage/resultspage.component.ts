@@ -12,20 +12,30 @@ export class ResultspageComponent implements OnInit {
   private propertyList: Array<any>;
   private totalResults: number;
   private numberOfResults: number;
+  private searchText: string;
   constructor(private propertyService:PropertyService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
         this.route.data.subscribe((obj: any) => {
           let resp = obj.properties._body.response
+          this.searchText = obj.properties._body.request.location
           this.propertyList = resp.listings;
-          this.propertyService.propertyList = this.propertyList;
           this.totalResults = resp.total_results;
           this.numberOfResults = this.propertyList.length;
+          
+
+          this.addSearchResult();
+          this.propertyService.propertyList = this.propertyList;
       });
   }
 
   private selectProperty (property) {
    this.router.navigate(['/searchresults/detail', {'id': property.thumb_url}]); 
+  }
+
+  private addSearchResult(){
+    let searchResultObj = {location: this.searchText, numberOfResults: this.totalResults};
+    this.propertyService.addSearchResult(searchResultObj);
   }
 }

@@ -1,16 +1,23 @@
 import { Injectable  } from '@angular/core';
 import { Jsonp, URLSearchParams, Response	 } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subject } from 'rxjs/Rx';
 import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/publishReplay'; // add publishReplay function to observable
 
 @Injectable()
 export class PropertyService {
-  private propertiesUrl = 'http://api.nestoria.co.uk/api';  // URL to web API
+  private propertiesUrl:string ;  // URL to web API
   public properties: Observable<any>;
   public propertyList: Array<any>;
 
-  constructor(private jsonp: Jsonp) {}
+  public _searchResults: BehaviorSubject<any[]>; 
+  private searchResultList: Array<any>;
+
+  constructor(private jsonp: Jsonp) {
+    this.propertiesUrl  = 'http://api.nestoria.co.uk/api';
+    this.searchResultList =   [];
+    this._searchResults = <BehaviorSubject<any[]>>new BehaviorSubject([]);
+  }
 
   getProperties(searchText: string) {
   	let params = new URLSearchParams();
@@ -22,7 +29,7 @@ export class PropertyService {
 	  params.set('listing_type','buy');
 	  params.set('place_name', searchText);
 
-    this.properties = this.jsonp.get(this.propertiesUrl, {search: params}).publishReplay(1).refCount();;
+    this.properties = this.jsonp.get(this.propertiesUrl, {search: params}).publishReplay(1).refCount();
   }
 
   getProperty(id: string) {
@@ -33,5 +40,14 @@ export class PropertyService {
         }
     });
     return selesctedProperty;
+  }
+
+  getSearchResults(){
+    return this._searchResults.asObservable();
+  }
+
+  addSearchResult(searchResult: any){
+    this.searchResultList.push(searchResult);
+    this._searchResults.next(this.searchResultList);
   }
 }

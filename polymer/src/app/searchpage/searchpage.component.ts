@@ -8,8 +8,11 @@ import { PropertyService } from '../shared/services/property.service'
   styleUrls: ['./searchpage.component.css']
 })
 export class SearchpageComponent implements OnInit {
+  private recentSearches;
 
   constructor(private propertyService: PropertyService, private router: Router) { 
+    this.recentSearches = this.propertyService.getSearchResults();
+    this.recentSearches.subscribe(obj => console.log("blabla",obj));
   }
   
   ngOnInit() {
@@ -21,5 +24,9 @@ export class SearchpageComponent implements OnInit {
 
   toggleLoadingSpinner(el){
     el.active = true;
+  }
+
+  isRecentSearch() {
+    return this.recentSearches.length === 0 ? false : true;
   }
  } 	

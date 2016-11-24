@@ -13,4 +13,16 @@
     </paper-input>
     <paper-button routerLink="/searchresults" class="search-component--fullwith" (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(propertyInput.value)" raised>Go</paper-button>
     <paper-button class="search-component--fullwith" raised>My Location</paper-button>
+    <div>
+    </div>
+    <div class="search-component__recent_search">
+        <h2> Recent Searches </h2>
+        <div *ngFor="let searchtext of (recentSearches | async)">
+            <ul>
+                <li>
+                    {{searchtext.location}} {{searchtext.numberOfResults}}
+                </li>
+            </ul>
+        </div>
+    </div>
 </section>
