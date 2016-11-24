@@ -13,3 +13,14 @@ paper-button {
 .input-content {
     padding: 0 0.29em
 }
+
+.search-component__recent_search {
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+.search-component__recent_search ul {
+    list-style: none;
+}
+
+.recent_search__item {}

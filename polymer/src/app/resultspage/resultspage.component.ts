@@ -19,11 +19,11 @@ export class ResultspageComponent implements OnInit {
   ngOnInit() {
         this.route.data.subscribe((obj: any) => {
           let resp = obj.properties._body.response
-          this.searchText = obj.properties._body.request.location
+
+          this.searchText = resp.locations[0].title;
           this.propertyList = resp.listings;
           this.totalResults = resp.total_results;
-          this.numberOfResults = this.propertyList.length;
-          
+          this.numberOfResults = this.propertyList.length;          
 
           this.addSearchResult();
           this.propertyService.propertyList = this.propertyList;

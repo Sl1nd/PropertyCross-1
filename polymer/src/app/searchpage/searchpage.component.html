@@ -15,12 +15,14 @@
     <paper-button class="search-component--fullwith" raised>My Location</paper-button>
     <div>
     </div>
-    <div class="search-component__recent_search" *ngIf="showRecentSearch">
+    <div *ngIf="showRecentSearch">
         <h2> Recent Searches </h2>
-        <div *ngFor="let searchtext of (recentSearches | async)">
+        <div class="search-component__recent_search
+" *ngFor="let searchtext of (recentSearches | async)">
             <ul>
-                <li>
-                    {{searchtext.location}} {{searchtext.numberOfResults}}
+                <li (click)="searchForProperties(searchtext.location)" routerLink="/searchresults" class="recent_search__item
+">
+                    {{searchtext.location}} ({{searchtext.numberOfResults}})
                 </li>
             </ul>
         </div>

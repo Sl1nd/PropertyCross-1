@@ -28,7 +28,6 @@ export class PropertyService {
 	  params.set('encoding','json');
 	  params.set('listing_type','buy');
 	  params.set('place_name', searchText);
-
     this.properties = this.jsonp.get(this.propertiesUrl, {search: params}).publishReplay(1).refCount();
   }
 
