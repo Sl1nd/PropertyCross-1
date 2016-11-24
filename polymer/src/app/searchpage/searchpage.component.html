@@ -12,7 +12,7 @@
     </paper-input>
     <paper-button routerLink="/searchresults" (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(propertyInput.value)" raised>Go</paper-button>
     <paper-button raised>My Location</paper-button>
-    <paper-spinner active class="search-component--spinner" #loadingSpinner></paper-spinner>
+    <paper-spinner class="search-component--spinner" #loadingSpinner></paper-spinner>
     <div>
     </div>
     <div *ngIf="showRecentSearch">
@@ -20,7 +20,7 @@
         <div class="search-component__recent_search
 " *ngFor="let searchtext of (recentSearches | async)">
             <ul>
-                <li (click)="searchForProperties(searchtext.location)" routerLink="/searchresults" class="recent_search__item
+                <li (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(searchtext.location)" routerLink="/searchresults" class="recent_search__item
 ">
                     {{searchtext.location}} ({{searchtext.numberOfResults}})
                 </li>
