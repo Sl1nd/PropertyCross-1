@@ -7,3 +7,16 @@
         <div main- title>Favourites</div>
     </app-toolbar>
 </app-header>
+<section>
+    <p *ngIf="isFavorite" class="favs-component__noselected
+">You have not added any properties to your favourites</p>
+    <div *ngFor="let favorites of (favPropertyList | async)">
+        <div class="item" (click)="selectProperty(favorites)">
+            <img class="avatar" src="{{favorites.img_url }}">
+            <div class="pad">
+                <div class="primary">{{favorites.price}}</div>
+                <div class="secondary">{{favorites.title}}</div>
+            </div>
+        </div>
+    </div>
+</section>

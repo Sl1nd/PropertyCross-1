@@ -16,4 +16,8 @@ export class ListingpageComponent implements OnInit {
   	this.route.params.subscribe(params => this.id = params["id"] );
   	this.property = this.propertyService.getProperty(this.id);
   }
+
+  addToFavorites() {
+   this.propertyService.addFavProperty(this.property);
+  }
 }

@@ -13,10 +13,18 @@ export class PropertyService {
   public _searchResults: BehaviorSubject<any[]>; 
   private searchResultList: Array<any>;
 
+  public _favProperty: BehaviorSubject<any[]>; 
+  private favPropertyList: Array<any>;
+
   constructor(private jsonp: Jsonp) {
     this.propertiesUrl  = 'http://api.nestoria.co.uk/api';
+    
     this.searchResultList =   [];
     this._searchResults = <BehaviorSubject<any[]>>new BehaviorSubject([]);
+    
+    this.favPropertyList =   [];
+    this._favProperty = <BehaviorSubject<any[]>>new BehaviorSubject([]);
+     
   }
 
   getProperties(searchText: string) {
@@ -49,6 +57,15 @@ export class PropertyService {
     !this.existingSearchResult(searchResult) ? this.searchResultList.push(searchResult): null;
 
     this._searchResults.next(this.searchResultList);
+  }
+
+  getFavProperties(){
+    return this._favProperty.asObservable();
+  }
+
+  addFavProperty(favoriteProperty: any){
+    this.favPropertyList.push(favoriteProperty);
+    this._favProperty.next(this.favPropertyList);
   }
 
   existingSearchResult(newSearch){
