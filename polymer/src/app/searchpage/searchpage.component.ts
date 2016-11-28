@@ -19,10 +19,18 @@ export class SearchpageComponent implements OnInit {
   }
 
   searchForProperties(searchText: string){
+    this.router.navigate(['/searchresults']);
     this.propertyService.getProperties(searchText);
   }
 
   toggleLoadingSpinner(el){
     el.active = true;
+  }
+
+  _keyPressed(event){
+    if(event.keyCode===13){
+      this.router.navigate(['/searchresults']);
+      this.propertyService.getProperties(event.target.value);  
+    }
   }
  } 	

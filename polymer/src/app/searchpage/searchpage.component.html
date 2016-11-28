@@ -8,9 +8,9 @@
 </app-header>
 <section class="search-component__content">
     <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My Location', to search in your current location.</p>
-    <paper-input type="search" label="search" class="search-component--button" #propertyInput>
+    <paper-input type="search" label="search" (keydown)="_keyPressed($event)" class="search-component--button" #propertyInput>
     </paper-input>
-    <paper-button routerLink="/searchresults" (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(propertyInput.value)" raised>Go</paper-button>
+    <paper-button (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(propertyInput.value)" raised>Go</paper-button>
     <paper-button raised>My Location</paper-button>
     <paper-spinner class="search-component--spinner" #loadingSpinner></paper-spinner>
     <div>
