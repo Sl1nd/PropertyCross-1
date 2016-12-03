@@ -12,7 +12,8 @@ export class AppComponent {
  		this.cacheService.initDataBase().subscribe( x => {
  			this.cacheService.getData("SearchResults").subscribe(cachedItems => {
  				if(cachedItems.lenght != 0) {
- 					this.propertyService._searchResults.next(cachedItems);
+ 					this.propertyService.searchResultList = cachedItems;
+ 					this.propertyService._searchResults.next(this.propertyService.searchResultList);
  				}
  			})
  		});

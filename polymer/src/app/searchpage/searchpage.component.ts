@@ -12,10 +12,8 @@ export class SearchpageComponent implements OnInit {
   private recentSearches;
   private showRecentSearch;
   constructor(private propertyService: PropertyService, private router: Router, private cacheService: CacheService) { 
-      this.cacheService._dbInitialized.subscribe(_ =>{
         this.recentSearches = this.propertyService.getSearchResults();
         this.recentSearches.subscribe(obj => obj.length === 0 ? this.showRecentSearch = false : this.showRecentSearch = true);   
-    })
   }
   
   ngOnInit() {

@@ -12,7 +12,7 @@ export class PropertyService {
   public propertyList: Array<any>;
 
   public _searchResults: BehaviorSubject<any[]>; 
-  private searchResultList: Array<any>;
+  public searchResultList: Array<any>;
 
   public _favProperty: BehaviorSubject<any[]>; 
   private favPropertyList: Array<any>;
@@ -54,10 +54,11 @@ export class PropertyService {
   }
 
   addSearchResult(searchResult: any){
-    !this.existingSearchResult(searchResult) ? this.searchResultList.push(searchResult): null;
-
-    this._searchResults.next(this.searchResultList);
-    this.cacheService.addData(searchResult, "SearchResults");
+    if(!this.existingSearchResult(searchResult)){
+       this.searchResultList.push(searchResult)
+       this._searchResults.next(this.searchResultList);
+       this.cacheService.addData(searchResult, "SearchResults");
+     }
   }
 
   getFavProperties(){
