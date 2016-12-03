@@ -10,6 +10,7 @@ import { FavspageComponent } from './favspage/favspage.component'
 import { ListingpageComponent } from './listingpage/listingpage.component'
 
 import { PropertyService } from './shared/services/property.service'
+import { CacheService } from './shared/services/cache.service'
 import { PropertyResolver } from './shared/resolver/property.resolver'
 
 import { AppComponent } from './app.component';
@@ -31,7 +32,7 @@ import { AppComponent } from './app.component';
      { path: 'favourites', component: FavspageComponent }
           ])
   ],
-  providers: [PropertyService, PropertyResolver],
+  providers: [PropertyService, CacheService, PropertyResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

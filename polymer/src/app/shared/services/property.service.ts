@@ -1,8 +1,9 @@
 import { Injectable  } from '@angular/core';
 import { Jsonp, URLSearchParams, Response	 } from '@angular/http';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/publishReplay'; // add publishReplay function to observable
+import {CacheService} from './cache.service';
 
 @Injectable()
 export class PropertyService {
@@ -16,7 +17,7 @@ export class PropertyService {
   public _favProperty: BehaviorSubject<any[]>; 
   private favPropertyList: Array<any>;
 
-  constructor(private jsonp: Jsonp) {
+  constructor(private jsonp: Jsonp, private cacheService: CacheService) {
     this.propertiesUrl  = 'http://api.nestoria.co.uk/api';
     
     this.searchResultList =   [];
@@ -24,7 +25,6 @@ export class PropertyService {
     
     this.favPropertyList =   [];
     this._favProperty = <BehaviorSubject<any[]>>new BehaviorSubject([]);
-     
   }
 
   getProperties(searchText: string) {
@@ -50,13 +50,14 @@ export class PropertyService {
   }
 
   getSearchResults(){
-    return this._searchResults.asObservable();
+        return this._searchResults.asObservable();      
   }
 
   addSearchResult(searchResult: any){
     !this.existingSearchResult(searchResult) ? this.searchResultList.push(searchResult): null;
 
     this._searchResults.next(this.searchResultList);
+    this.cacheService.addData(searchResult, "SearchResults");
   }
 
   getFavProperties(){
