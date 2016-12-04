@@ -66,11 +66,11 @@ export class PropertyService {
   }
 
   addFavProperty(favoriteProperty: any){
-    //if(!this.existingFavorite(favoriteProperty)){
+    if(!this.existingFavorite(favoriteProperty)){
       this.favPropertyList.push(favoriteProperty);
       this._favProperty.next(this.favPropertyList);
       this.cacheService.addData(favoriteProperty, "FavProperties");
- //   }
+    }
   }
 
   existingSearchResult(newSearch){
@@ -83,10 +83,10 @@ export class PropertyService {
     return isPartOfArray; 
   }
 
-    existingFavorite(favsProperty){
+  existingFavorite(favsProperty){
     let isPartOfArray = false;
     this.favPropertyList.forEach(property => {
-       if(property.location === favsProperty.location) {
+       if(property.thumb_url === favsProperty.thumb_url) {
            isPartOfArray = true; 
         }
     });
