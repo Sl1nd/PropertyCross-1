@@ -6,11 +6,13 @@ export class CacheService {
 	private isIDBSupported: boolean;
 	private db: any;
 	public _dbInitialized: Subject<any>;
-	public _dbContent: Subject<any>;
+	public _dbPropertiesContent: Subject<any>;
+	public _dbSearchResultContent: Subject<any>;
 	
 	constructor(){
 	  this._dbInitialized = <Subject<any>> new Subject();
-  	  this._dbContent = <Subject<any>> new Subject();
+  	  this._dbPropertiesContent = <Subject<any>> new Subject();
+	  this._dbSearchResultContent = <Subject<any>> new Subject();
 	}
 
 	public initDataBase(){
@@ -21,13 +23,14 @@ export class CacheService {
 
 		    if(this.isIDBSupported == true) {
 		    	var openRequest = indexedDB.open("propertycross",4);
-		    	console.log(openRequest);
 		    	openRequest.onupgradeneeded = (e:any) => {
-    				console.log("running onupgradeneeded");
 				    let thisDB = e.target.result;
 
 				    if(!thisDB.objectStoreNames.contains("SearchResults")) {
-				        thisDB.createObjectStore("SearchResults", {autoIncrement:true});
+				            thisDB.createObjectStore("SearchResults", {autoIncrement:true});
+				    }
+				    if(!thisDB.objectStoreNames.contains("FavProperties")) {
+				        	thisDB.createObjectStore("FavProperties", {autoIncrement:true});
 				    }
 				}
 
@@ -51,22 +54,38 @@ export class CacheService {
 		}
 	}
 
-	public getData(table){
-		let transaction = this.db.transaction([table], "readonly");
-		let objectStore = transaction.objectStore(table);
-		let items = new Array();
+	public getSearchResults(){
+		let transaction = this.db.transaction(["SearchResults"], "readonly");
+		let objectStore = transaction.objectStore("SearchResults");
 		let cursorReuest = objectStore.openCursor();
-		
-		cursorReuest.onsuccess = (evt) => {                    
+		let searchResults = new Array();      
+		cursorReuest.onsuccess = (evt) => {              
         	let cursor = evt.target.result;
         	if (cursor) {
-            	items.push(cursor.value);
+            	searchResults.push(cursor.value);
             	cursor.continue();
         	}
-
-        	this._dbContent.next(items);
+        	this._dbSearchResultContent.next(searchResults);
     	};
     	
-    	return this._dbContent.asObservable();	
+    	return this._dbSearchResultContent.asObservable();	
 	}
+
+	public getFavProperties(){
+		let transaction = this.db.transaction("FavProperties");
+		let objectStore = transaction.objectStore("FavProperties");
+		let cursorReuest = objectStore.openCursor();
+		let favsProperties = new Array();      
+		cursorReuest.onsuccess = (evt) => {              
+        	let cursor = evt.target.result;
+        	if (cursor) {
+            	favsProperties.push(cursor.value);
+            	cursor.continue();
+        	}
+        	this._dbPropertiesContent.next(favsProperties);
+    	};
+    	
+    	return this._dbPropertiesContent.asObservable();	
+	}
+
 }

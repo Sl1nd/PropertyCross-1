@@ -10,10 +10,17 @@ import { PropertyService } from './shared/services/property.service';
 export class AppComponent {
  	constructor(private cacheService: CacheService, private propertyService: PropertyService) {
  		this.cacheService.initDataBase().subscribe( x => {
- 			this.cacheService.getData("SearchResults").subscribe(cachedItems => {
- 				if(cachedItems.lenght != 0) {
+ 			this.cacheService.getSearchResults().subscribe(cachedItems => {
+ 				if(cachedItems.lenght !== 0) {
  					this.propertyService.searchResultList = cachedItems;
  					this.propertyService._searchResults.next(this.propertyService.searchResultList);
+ 				}
+ 			})
+
+ 			this.cacheService.getFavProperties().subscribe(cachedItems => {
+ 				if(cachedItems.lenght !== 0) {
+ 					this.propertyService.favPropertyList = cachedItems;
+ 					this.propertyService._favProperty.next(cachedItems);
  				}
  			})
  		});

@@ -15,7 +15,7 @@ export class PropertyService {
   public searchResultList: Array<any>;
 
   public _favProperty: BehaviorSubject<any[]>; 
-  private favPropertyList: Array<any>;
+  public favPropertyList: Array<any>;
 
   constructor(private jsonp: Jsonp, private cacheService: CacheService) {
     this.propertiesUrl  = 'http://api.nestoria.co.uk/api';
@@ -66,14 +66,27 @@ export class PropertyService {
   }
 
   addFavProperty(favoriteProperty: any){
-    this.favPropertyList.push(favoriteProperty);
-    this._favProperty.next(this.favPropertyList);
+    //if(!this.existingFavorite(favoriteProperty)){
+      this.favPropertyList.push(favoriteProperty);
+      this._favProperty.next(this.favPropertyList);
+      this.cacheService.addData(favoriteProperty, "FavProperties");
+ //   }
   }
 
   existingSearchResult(newSearch){
     let isPartOfArray = false;
     this.searchResultList.forEach(formerSearch => {
         if(formerSearch.location === newSearch.location) {
+           isPartOfArray = true; 
+        }
+    });
+    return isPartOfArray; 
+  }
+
+    existingFavorite(favsProperty){
+    let isPartOfArray = false;
+    this.favPropertyList.forEach(property => {
+       if(property.location === favsProperty.location) {
            isPartOfArray = true; 
         }
     });

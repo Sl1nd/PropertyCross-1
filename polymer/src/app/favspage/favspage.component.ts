@@ -14,8 +14,8 @@ export class FavspageComponent implements OnInit {
 
   constructor(private propertyService: PropertyService, private router: Router) { 
   	this.favPropertyList = this.propertyService.getFavProperties();
-  	this.favPropertyList.subscribe(list => this.isFavorite = list.length > 0 ? false : true
-      )};
+    this.favPropertyList.subscribe(list => this.isFavorite = list.length > 0 ? false : true)
+  };
 
   ngOnInit() {
   }
