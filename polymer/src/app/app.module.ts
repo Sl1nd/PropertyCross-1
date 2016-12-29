@@ -10,6 +10,7 @@ import { FavspageComponent } from './favspage/favspage.component'
 import { ListingpageComponent } from './listingpage/listingpage.component'
 
 import { PropertyService } from './shared/services/property.service'
+import { GeoLocationService } from './shared/services/geo-location.service'
 import { CacheService } from './shared/services/cache.service'
 import { PropertyResolver } from './shared/resolver/property.resolver'
 
@@ -36,7 +37,7 @@ import { AppComponent } from './app.component';
      { path: 'favourites', component: FavspageComponent }
           ])
   ],
-  providers: [PropertyService, CacheService, PropertyResolver],
+  providers: [PropertyService, GeoLocationService, CacheService, PropertyResolver],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

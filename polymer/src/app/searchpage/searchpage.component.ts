@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropertyService } from '../shared/services/property.service';
+import { GeoLocationService } from '../shared/services/geo-location.service';
+
 import { CacheService } from '../shared/services/cache.service';
 
 @Component({
@@ -11,7 +13,7 @@ import { CacheService } from '../shared/services/cache.service';
 export class SearchpageComponent implements OnInit {
   private recentSearches;
   private showRecentSearch;
-  constructor(private propertyService: PropertyService, private router: Router, private cacheService: CacheService) { 
+  constructor(private propertyService: PropertyService, private geoLocationService: GeoLocationService, private router: Router, private cacheService: CacheService) { 
         this.recentSearches = this.propertyService.getSearchResults();
         this.recentSearches.subscribe(obj => obj.length === 0 ? this.showRecentSearch = false : this.showRecentSearch = true);   
   }
@@ -26,6 +28,10 @@ export class SearchpageComponent implements OnInit {
 
   toggleLoadingSpinner(el){
     el.active = true;
+  }
+
+  searchCurrentLocation(){
+    this.geoLocationService.getGeoLocation().subscribe(x => console.log(x));
   }
 
   _keyPressed(event){

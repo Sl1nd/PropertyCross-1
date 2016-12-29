@@ -11,7 +11,7 @@
     <paper-input type="search" label="search" (keydown)="_keyPressed($event)" class="search-component--button" #propertyInput>
     </paper-input>
     <paper-button (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(propertyInput.value)" raised>Go</paper-button>
-    <paper-button raised>My Location</paper-button>
+    <paper-button raised (click)="searchCurrentLocation()">My Location</paper-button>
     <paper-spinner class="search-component--spinner" #loadingSpinner></paper-spinner>
     <div>
     </div>
