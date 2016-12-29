@@ -8,6 +8,11 @@ body {
     font-family: 'Roboto', Helvetica, sans-serif;
 }
 
+.loading {
+    height: 100%;
+    width: 100%;
+}
+
 app-toolbar {
     background-image: url('assets/images/actionbar_tile.png');
     color: white;
