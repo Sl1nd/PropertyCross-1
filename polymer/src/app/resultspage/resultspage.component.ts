@@ -18,6 +18,7 @@ export class ResultspageComponent implements OnInit {
 
   ngOnInit() {
         this.route.data.subscribe((obj: any) => {
+          console.log(obj);  
           let resp = obj.properties._body.response
 
           this.searchText = resp.locations[0].title;

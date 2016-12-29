@@ -8,6 +8,8 @@ import {CacheService} from './cache.service';
 @Injectable()
 export class PropertyService {
   private propertiesUrl:string ;  // URL to web API
+  private propertiesLocationUrl: string;
+
   public properties: Observable<any>;
   public propertyList: Array<any>;
 
@@ -18,8 +20,9 @@ export class PropertyService {
   public favPropertyList: Array<any>;
 
   constructor(private jsonp: Jsonp, private cacheService: CacheService) {
-    this.propertiesUrl  = 'http://api.nestoria.co.uk/api';
-    
+    this.propertiesUrl  = 'http://192.168.2.106:3000';
+    this.propertiesLocationUrl = 'http://192.168.2.106:3000/location';
+
     this.searchResultList =   [];
     this._searchResults = <BehaviorSubject<any[]>>new BehaviorSubject([]);
     
@@ -36,11 +39,19 @@ export class PropertyService {
 	  params.set('encoding','json');
 	  params.set('listing_type','buy');
 	  params.set('place_name', searchText);
-    this.properties = this.jsonp.get(this.propertiesUrl, {search: params}).publishReplay(1).refCount();
+    this.properties = this.jsonp.get(this.propertiesUrl, {search: params});
   }
 
-  getLocationBasedProperties(){
-
+  getLocationBasedProperties(center_point){
+    let params = new URLSearchParams();
+    params.set('country', 'uk');
+    params.set('callback', 'JSONP_CALLBACK');
+    params.set('pretty','1');
+    params.set('action','search_listings');
+    params.set('encoding','json');
+    params.set('listing_type','buy');
+    params.set('center_point', center_point);
+    this.properties = this.jsonp.get(this.propertiesLocationUrl, {search: params});
   }
 
   getProperty(id: string) {

@@ -31,11 +31,17 @@ export class SearchpageComponent implements OnInit {
   }
 
   searchCurrentLocation(){
-    this.geoLocationService.getGeoLocation().subscribe(x => console.log(x));
+    
+    this.geoLocationService.getGeoLocation().subscribe(location => {
+      let centre_point=location.lat+ ',' +location.lng;
+      this.router.navigate(['/searchresults']);
+      this.propertyService.getLocationBasedProperties(centre_point);
+    });
   }
 
   _keyPressed(event){
     if(event.keyCode===13){
+      console.log("$$$$", event.target.value);
       this.router.navigate(['/searchresults']);
       this.propertyService.getProperties(event.target.value);  
     }

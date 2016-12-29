@@ -11,7 +11,7 @@ getGeoLocation() {
 	let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let apiKey = "AIzaSyDaJ5VSowwVNjPt5503jnM9WwMlxpsO_0I"
-    console.log("Losgehts");
+    
     return this.http.post("https://www.googleapis.com/geolocation/v1/geolocate?key="+apiKey, {}, options)
         .map(this.extractData)
         .catch(this.handleError);
