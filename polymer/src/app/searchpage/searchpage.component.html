@@ -8,7 +8,7 @@
 </app-header>
 <section class="search-component__content">
     <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My Location', to search in your current location.</p>
-    <paper-input type="search" label="search" (keydown)="_keyPressed($event)" class="search-component--button" #propertyInput>
+    <paper-input type="search" label="search" (keydown)="_keyPressed($event)" #propertyInput>
     </paper-input>
     <paper-button (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(propertyInput.value)" raised>Go</paper-button>
     <paper-button raised (click)="searchCurrentLocation()">My Location</paper-button>
@@ -17,11 +17,9 @@
     </div>
     <div *ngIf="showRecentSearch">
         <h2> Recent Searches </h2>
-        <div class="search-component__recent_search
-" *ngFor="let searchtext of (recentSearches | async)">
+        <div class="search-component__recent_search" *ngFor="let searchtext of (recentSearches | async)">
             <ul>
-                <li (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(searchtext.location)" routerLink="/searchresults" class="recent_search__item
-">
+                <li (click)="toggleLoadingSpinner(loadingSpinner);searchForProperties(searchtext.location)" routerLink="/searchresults" class="recent_search__item">
                     {{searchtext.location}} ({{searchtext.numberOfResults}})
                 </li>
             </ul>

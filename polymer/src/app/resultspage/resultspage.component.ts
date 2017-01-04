@@ -18,7 +18,6 @@ export class ResultspageComponent implements OnInit {
 
   ngOnInit() {
         this.route.data.subscribe((obj: any) => {
-          console.log(obj);  
           let resp = obj.properties._body.response
 
           this.searchText = resp.locations[0].title;
@@ -32,7 +31,7 @@ export class ResultspageComponent implements OnInit {
   }
 
   private selectProperty (property) {
-   this.router.navigate(['/searchresults/detail', {'id': property.thumb_url}]); 
+     this.router.navigate(['/searchresults/detail', {'id': property.thumb_url}]); 
   }
 
   private addSearchResult(){

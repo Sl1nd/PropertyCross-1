@@ -3,10 +3,6 @@
     padding: 8px;
 }
 
-paper-button {
-    margin: 0;
-}
-
 .search-component__content {
     padding: 1em;
 }
@@ -14,6 +10,7 @@ paper-button {
 .input-content {
     padding: 0 0.29em
 }
+
 
 .search-component__recent_search {
     border: 1px solid black;
