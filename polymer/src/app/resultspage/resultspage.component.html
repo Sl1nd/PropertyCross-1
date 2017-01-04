@@ -1,10 +1,12 @@
 <app-header>
     <app-toolbar>
-        <a routerLink="/" routerLinkActive="active" tabindex="-1">
-            <paper-icon-button icon=":chevron-left"></paper-icon-button>
-        </a>
-        <iron-icon src="./assets/images/icon-base.png"> </iron-icon>
-        <div main- title>{{numberOfResults}} of {{totalResults}} matches</div>
+        <div>
+            <a routerLink="/" routerLinkActive="active" tabindex="-1">
+                <paper-icon-button icon=":chevron-left"></paper-icon-button>
+                <iron-icon src="./assets/images/icon-base.png"> </iron-icon>
+            </a>
+        </div>
+        <div main-title>{{numberOfResults}} of {{totalResults}} matches</div>
     </app-toolbar>
 </app-header>
 <section>

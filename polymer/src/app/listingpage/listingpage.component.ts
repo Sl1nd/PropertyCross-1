@@ -10,15 +10,23 @@ import { PropertyService } from '../shared/services/property.service';
 export class ListingpageComponent implements OnInit {
   private id: string;
   private property; 
+  private isFavorite: boolean;
   constructor(private propertyService: PropertyService, private route: ActivatedRoute) {}
 
   ngOnInit() {
   	this.route.params.subscribe(params => this.id = params["id"]);
   	this.property = this.propertyService.getProperty(this.id);
+    this.isFavorite = this.propertyService.existingFavorite(this.property);
+
   }
 
   addToFavorites() {
    this.propertyService.addFavProperty(this.property);
+   this.isFavorite = true;
+  }
+
+  removeFromFavorite() {
+   this.isFavorite = false;
   }
 
   navigateBack() {
