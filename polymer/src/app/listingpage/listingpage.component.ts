@@ -13,7 +13,7 @@ export class ListingpageComponent implements OnInit {
   constructor(private propertyService: PropertyService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-  	this.route.params.subscribe(params => this.id = params["id"] );
+  	this.route.params.subscribe(params => this.id = params["id"]);
   	this.property = this.propertyService.getProperty(this.id);
   }
 

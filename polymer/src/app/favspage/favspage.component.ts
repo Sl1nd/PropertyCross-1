@@ -9,12 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./favspage.component.css']
 })
 export class FavspageComponent implements OnInit {
-  private favPropertyList: Observable<any>;	
+  private favPropertyList: Array<any>;	
   private isFavorite: boolean;
 
   constructor(private propertyService: PropertyService, private router: Router) { 
-  	this.favPropertyList = this.propertyService.getFavProperties();
-    this.favPropertyList.subscribe(list => this.isFavorite = list.length > 0 ? false : true)
+  	this.propertyService.getFavProperties().subscribe(list => {
+      this.favPropertyList = list;
+
+      this.isFavorite = list.length > 0 ? false : true
+      this.propertyService.propertyList = this.favPropertyList;
+    })
   };
 
   ngOnInit() {

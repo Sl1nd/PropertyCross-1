@@ -10,14 +10,3 @@
 <section>
     <property-list [items]="propertyList" (selected-item-changed)="selectProperty($event.detail.value)"></property-list>
 </section>
-<!--section>
-    <div *ngFor="let property of propertyList">
-        <div class="item" (click)="selectProperty(property)">
-            <img class="avatar" src="{{property.img_url }}">
-            <div class="pad">
-                <div class="primary">{{property.price}}</div>
-                <div class="secondary">{{property.title}}</div>
-            </div>
-        </div>
-    </div>
-</section-->

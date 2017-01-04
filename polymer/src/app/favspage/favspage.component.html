@@ -10,7 +10,8 @@
 <section>
     <p *ngIf="isFavorite" class="favs-component__noselected
 ">You have not added any properties to your favourites</p>
-    <div *ngFor="let favorites of (favPropertyList | async)">
+    <property-list [items]="favPropertyList" (selected-item-changed)="selectProperty($event.detail.value)"></property-list>
+    <!--div *ngFor="let favorites of (favPropertyList | async)">
         <div class="item" (click)="selectProperty(favorites)">
             <img class="avatar" src="{{favorites.img_url }}">
             <div class="pad">
@@ -18,5 +19,5 @@
                 <div class="secondary">{{favorites.title}}</div>
             </div>
         </div>
-    </div>
+    </div-->
 </section>
