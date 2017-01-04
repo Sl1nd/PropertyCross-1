@@ -48,14 +48,14 @@ export class CacheService {
 		let transaction = this.db.transaction([table],"readwrite");
 		let store = transaction.objectStore(table);
 		let dbRequest = store.add(data);
-		
-		dbRequest.onsuccess = (e:any) => {
-			console.log("data successfully written to DB");
-		}
+		return dbRequest;
 	}
 
 	public removeData(data, table){
-		console.log(data, table);
+		var request = this.db.transaction([table], "readwrite")
+                .objectStore(table)
+                .delete(data.key);
+		return request;
 	}
 
 	public getSearchResults(){

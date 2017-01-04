@@ -41,7 +41,6 @@ export class SearchpageComponent implements OnInit {
 
   _keyPressed(event){
     if(event.keyCode===13){
-      console.log("$$$$", event.target.value);
       this.router.navigate(['/searchresults']);
       this.propertyService.getProperties(event.target.value);  
     }

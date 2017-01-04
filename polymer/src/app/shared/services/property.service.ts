@@ -82,21 +82,24 @@ export class PropertyService {
 
   addFavProperty(favoriteProperty: any){
     if(!this.existingFavorite(favoriteProperty)){
-      this.favPropertyList.push(favoriteProperty);
       this._favProperty.next(this.favPropertyList);
-      this.cacheService.addData(favoriteProperty, "FavProperties");
+      let dbRequest = this.cacheService.addData(favoriteProperty, "FavProperties");
+      dbRequest.onsuccess = (event:any) => {
+        favoriteProperty.key = event.target.result;
+        this.favPropertyList.push(favoriteProperty);
+      }
     }
   }
 
   removeFavProperty(favoriteProperty: any){
       for(let i = 0; i< this.favPropertyList.length; i++){
-        console.log(favoriteProperty.thumb_url, this.favPropertyList[i].thumb_url);
         if(favoriteProperty.thumb_url == this.favPropertyList[i].thumb_url){
-          this.favPropertyList.splice(i,1);
-          this.cacheService.removeData(this.favPropertyList[i], "FavProperties");
+          let dbRequest = this.cacheService.removeData(this.favPropertyList[i], "FavProperties");
+          dbRequest.onsuccess = (event) => {
+            this.favPropertyList.splice(i,1);
+          };
         }
       }
-    //  this._favProperty.next(this.favPropertyList);
   }
 
   existingSearchResult(newSearch){
