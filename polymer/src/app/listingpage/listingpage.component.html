@@ -1,18 +1,16 @@
 <app-header>
     <app-toolbar>
-        <a routerLink="/searchresults" routerLinkActive="active" tabindex="-1">
-            <paper-icon-button icon=":chevron-left"></paper-icon-button>
-        </a>
+        <paper-icon-button icon=":chevron-left" (click)="navigateBack()"></paper-icon-button>
         <iron-icon src="./assets/images/icon-base.png"> </iron-icon>
         <div main- title>Property Details</div>
         <paper-icon-button icon="icons:star-border" (click)="addToFavorites()"></paper-icon-button>
     </app-toolbar>
 </app-header>
-<section class="listing-component__content">
+<section class="listing-component__content ">
     <h1>{{property.price}}</h1>
     <div>
         {{property.title}}
-        <img class="avatar" src="{{property.img_url}}">
+        <img class="avatar " src="{{property.img_url}} ">
     </div>
     <div>
         {{property.bathroom_number}} Bathrooms, {{property.bedroom_number}} Bedrooms

@@ -20,4 +20,8 @@ export class ListingpageComponent implements OnInit {
   addToFavorites() {
    this.propertyService.addFavProperty(this.property);
   }
+
+  navigateBack() {
+    window.history.back();
+  }
 }
