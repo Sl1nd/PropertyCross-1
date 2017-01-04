@@ -26,6 +26,8 @@ export class ListingpageComponent implements OnInit {
   }
 
   removeFromFavorite() {
+    console.log("removed item");
+   this.propertyService.removeFavProperty(this.property);
    this.isFavorite = false;
   }
 

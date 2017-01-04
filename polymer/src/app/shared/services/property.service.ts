@@ -88,6 +88,17 @@ export class PropertyService {
     }
   }
 
+  removeFavProperty(favoriteProperty: any){
+      for(let i = 0; i< this.favPropertyList.length; i++){
+        console.log(favoriteProperty.thumb_url, this.favPropertyList[i].thumb_url);
+        if(favoriteProperty.thumb_url == this.favPropertyList[i].thumb_url){
+          this.favPropertyList.splice(i,1);
+          this.cacheService.removeData(this.favPropertyList[i], "FavProperties");
+        }
+      }
+    //  this._favProperty.next(this.favPropertyList);
+  }
+
   existingSearchResult(newSearch){
     let isPartOfArray = false;
     this.searchResultList.forEach(formerSearch => {

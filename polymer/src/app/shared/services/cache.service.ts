@@ -54,6 +54,10 @@ export class CacheService {
 		}
 	}
 
+	public removeData(data, table){
+		console.log(data, table);
+	}
+
 	public getSearchResults(){
 		let transaction = this.db.transaction(["SearchResults"], "readonly");
 		let objectStore = transaction.objectStore("SearchResults");
